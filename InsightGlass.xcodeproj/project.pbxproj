@@ -1,0 +1,317 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A001 /* InsightGlassApp.swift */ = {isa = PBXBuildFile; fileRef = B001 /* InsightGlassApp.swift */; };
+		A002 /* AppState.swift */ = {isa = PBXBuildFile; fileRef = B002 /* AppState.swift */; };
+		A003 /* EmotionObservation.swift */ = {isa = PBXBuildFile; fileRef = B003; };
+		A004 /* AudioPattern.swift */ = {isa = PBXBuildFile; fileRef = B004; };
+		A005 /* SessionRecord.swift */ = {isa = PBXBuildFile; fileRef = B005; };
+		A006 /* LocationContext.swift */ = {isa = PBXBuildFile; fileRef = B006; };
+		A007 /* DeviceConnectionState.swift */ = {isa = PBXBuildFile; fileRef = B007; };
+		A010 /* MetaGlassesService.swift */ = {isa = PBXBuildFile; fileRef = B010; };
+		A011 /* EmotionObservationEngine.swift */ = {isa = PBXBuildFile; fileRef = B011; };
+		A012 /* AudioPatternAnalyzer.swift */ = {isa = PBXBuildFile; fileRef = B012; };
+		A013 /* ConversationSupportEngine.swift */ = {isa = PBXBuildFile; fileRef = B013; };
+		A014 /* VoiceResponseEngine.swift */ = {isa = PBXBuildFile; fileRef = B014; };
+		A015 /* LocationContextService.swift */ = {isa = PBXBuildFile; fileRef = B015; };
+		A016 /* PrivacyManager.swift */ = {isa = PBXBuildFile; fileRef = B016; };
+		A020 /* LiveViewModel.swift */ = {isa = PBXBuildFile; fileRef = B020; };
+		A021 /* AnalysisViewModel.swift */ = {isa = PBXBuildFile; fileRef = B021; };
+		A022 /* DeviceViewModel.swift */ = {isa = PBXBuildFile; fileRef = B022; };
+		A023 /* SettingsViewModel.swift */ = {isa = PBXBuildFile; fileRef = B023; };
+		A030 /* DisclaimerView.swift */ = {isa = PBXBuildFile; fileRef = B030; };
+		A040 /* ContentView.swift */ = {isa = PBXBuildFile; fileRef = B040; };
+		A041 /* LiveView.swift */ = {isa = PBXBuildFile; fileRef = B041; };
+		A042 /* AnalysisFeedView.swift */ = {isa = PBXBuildFile; fileRef = B042; };
+		A043 /* VoiceControlsView.swift */ = {isa = PBXBuildFile; fileRef = B043; };
+		A044 /* HistoryTimelineView.swift */ = {isa = PBXBuildFile; fileRef = B044; };
+		A045 /* DeviceConnectionView.swift */ = {isa = PBXBuildFile; fileRef = B045; };
+		A046 /* PrivacySettingsView.swift */ = {isa = PBXBuildFile; fileRef = B046; };
+		A050 /* GlassmorphicCard.swift */ = {isa = PBXBuildFile; fileRef = B050; };
+		A051 /* AudioWaveformView.swift */ = {isa = PBXBuildFile; fileRef = B051; };
+		A052 /* ConfidenceMeterView.swift */ = {isa = PBXBuildFile; fileRef = B052; };
+		A053 /* ConnectionStatusView.swift */ = {isa = PBXBuildFile; fileRef = B053; };
+		A054 /* CameraOverlayView.swift */ = {isa = PBXBuildFile; fileRef = B054; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B001 /* InsightGlassApp.swift */     = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InsightGlassApp.swift"; sourceTree = "<group>"; };
+		B002 /* AppState.swift */             = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState.swift"; sourceTree = "<group>"; };
+		B003 /* EmotionObservation.swift */   = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmotionObservation.swift"; sourceTree = "<group>"; };
+		B004 /* AudioPattern.swift */         = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AudioPattern.swift"; sourceTree = "<group>"; };
+		B005 /* SessionRecord.swift */        = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SessionRecord.swift"; sourceTree = "<group>"; };
+		B006 /* LocationContext.swift */      = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationContext.swift"; sourceTree = "<group>"; };
+		B007 /* DeviceConnectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceConnectionState.swift"; sourceTree = "<group>"; };
+		B010 /* MetaGlassesService.swift */   = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetaGlassesService.swift"; sourceTree = "<group>"; };
+		B011 /* EmotionObservationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmotionObservationEngine.swift"; sourceTree = "<group>"; };
+		B012 /* AudioPatternAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AudioPatternAnalyzer.swift"; sourceTree = "<group>"; };
+		B013 /* ConversationSupportEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConversationSupportEngine.swift"; sourceTree = "<group>"; };
+		B014 /* VoiceResponseEngine.swift */  = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VoiceResponseEngine.swift"; sourceTree = "<group>"; };
+		B015 /* LocationContextService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationContextService.swift"; sourceTree = "<group>"; };
+		B016 /* PrivacyManager.swift */       = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrivacyManager.swift"; sourceTree = "<group>"; };
+		B020 /* LiveViewModel.swift */        = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveViewModel.swift"; sourceTree = "<group>"; };
+		B021 /* AnalysisViewModel.swift */    = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnalysisViewModel.swift"; sourceTree = "<group>"; };
+		B022 /* DeviceViewModel.swift */      = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceViewModel.swift"; sourceTree = "<group>"; };
+		B023 /* SettingsViewModel.swift */    = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewModel.swift"; sourceTree = "<group>"; };
+		B030 /* DisclaimerView.swift */       = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisclaimerView.swift"; sourceTree = "<group>"; };
+		B040 /* ContentView.swift */          = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView.swift"; sourceTree = "<group>"; };
+		B041 /* LiveView.swift */             = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveView.swift"; sourceTree = "<group>"; };
+		B042 /* AnalysisFeedView.swift */     = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnalysisFeedView.swift"; sourceTree = "<group>"; };
+		B043 /* VoiceControlsView.swift */    = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VoiceControlsView.swift"; sourceTree = "<group>"; };
+		B044 /* HistoryTimelineView.swift */  = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HistoryTimelineView.swift"; sourceTree = "<group>"; };
+		B045 /* DeviceConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceConnectionView.swift"; sourceTree = "<group>"; };
+		B046 /* PrivacySettingsView.swift */  = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrivacySettingsView.swift"; sourceTree = "<group>"; };
+		B050 /* GlassmorphicCard.swift */     = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GlassmorphicCard.swift"; sourceTree = "<group>"; };
+		B051 /* AudioWaveformView.swift */    = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AudioWaveformView.swift"; sourceTree = "<group>"; };
+		B052 /* ConfidenceMeterView.swift */  = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConfidenceMeterView.swift"; sourceTree = "<group>"; };
+		B053 /* ConnectionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConnectionStatusView.swift"; sourceTree = "<group>"; };
+		B054 /* CameraOverlayView.swift */    = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraOverlayView.swift"; sourceTree = "<group>"; };
+		BPROD /* InsightGlass.app */          = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InsightGlass.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		ROOT = {
+			isa = PBXGroup;
+			children = (
+				GAPP,
+				GPROD,
+			);
+			sourceTree = "<group>";
+		};
+		GPROD = {
+			isa = PBXGroup;
+			children = (BPROD,);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		GAPP = {
+			isa = PBXGroup;
+			children = (
+				GAPPFILES,
+				GMODELS,
+				GSERVICES,
+				GVIEWMODELS,
+				GVIEWS,
+				GRESOURCES,
+			);
+			path = InsightGlass;
+			sourceTree = "<group>";
+		};
+		GAPPFILES = {
+			isa = PBXGroup;
+			children = (B001, B002);
+			name = App;
+			sourceTree = "<group>";
+		};
+		GMODELS = {
+			isa = PBXGroup;
+			children = (B003, B004, B005, B006, B007);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		GSERVICES = {
+			isa = PBXGroup;
+			children = (B010, B011, B012, B013, B014, B015, B016);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		GVIEWMODELS = {
+			isa = PBXGroup;
+			children = (B020, B021, B022, B023);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		GVIEWS = {
+			isa = PBXGroup;
+			children = (GONBOARDING, GMAIN, GCOMPONENTS);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		GONBOARDING = {
+			isa = PBXGroup;
+			children = (B030);
+			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		GMAIN = {
+			isa = PBXGroup;
+			children = (B040, B041, B042, B043, B044, B045, B046);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		GCOMPONENTS = {
+			isa = PBXGroup;
+			children = (B050, B051, B052, B053, B054);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		GRESOURCES = {
+			isa = PBXGroup;
+			children = ();
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		TARGET1 = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BUILDCONFIGLIST;
+			buildPhases = (SOURCEBUILDPHASE,);
+			buildRules = ();
+			dependencies = ();
+			name = InsightGlass;
+			productName = InsightGlass;
+			productReference = BPROD;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		PROJECT = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				ORGANIZATIONNAME = "Insight Glass";
+				TargetAttributes = {
+					TARGET1 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = PROJBUILDCONFIGLIST;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (en, Base);
+			mainGroup = ROOT;
+			productRefGroup = GPROD;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (TARGET1,);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		SOURCEBUILDPHASE = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A001, A002,
+				A003, A004, A005, A006, A007,
+				A010, A011, A012, A013, A014, A015, A016,
+				A020, A021, A022, A023,
+				A030,
+				A040, A041, A042, A043, A044, A045, A046,
+				A050, A051, A052, A053, A054,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		DEBUG_CONFIG = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("DEBUG=1", "$(inherited)");
+				INFOPLIST_FILE = InsightGlass/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.insightglass.app;
+				PRODUCT_NAME = InsightGlass;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		RELEASE_CONFIG = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				INFOPLIST_FILE = InsightGlass/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.insightglass.app;
+				PRODUCT_NAME = InsightGlass;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		PROJ_DEBUG = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		PROJ_RELEASE = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BUILDCONFIGLIST = {
+			isa = XCConfigurationList;
+			buildConfigurations = (DEBUG_CONFIG, RELEASE_CONFIG);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		PROJBUILDCONFIGLIST = {
+			isa = XCConfigurationList;
+			buildConfigurations = (PROJ_DEBUG, PROJ_RELEASE);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = PROJECT;
+}

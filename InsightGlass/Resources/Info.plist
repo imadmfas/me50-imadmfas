@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Camera permission — used for live face/expression analysis -->
+    <key>NSCameraUsageDescription</key>
+    <string>Insight Glass uses the camera to perform speculative wellbeing observations based on facial expressions and visual cues. No video is stored or transmitted.</string>
+
+    <!-- Microphone permission — used for vocal pattern analysis -->
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Insight Glass uses the microphone to analyze vocal patterns such as speaking pace and conversational tone. Audio is processed locally and never recorded or transmitted.</string>
+
+    <!-- Location permission — optional environmental context only -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Insight Glass optionally uses your location to provide environmental context (such as home, work, or travel) that may subtly influence conversational guidance. Location data is never stored beyond the current session.</string>
+
+    <!-- Bluetooth permission — Meta glasses discovery and pairing -->
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>Insight Glass uses Bluetooth to connect to Meta smart glasses for audio routing and device integration.</string>
+
+    <!-- Background audio for glasses speaker output -->
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>audio</string>
+        <string>bluetooth-central</string>
+    </array>
+
+    <!-- Face ID (not used but required by TrueDepth framework on some models) -->
+    <key>NSFaceIDUsageDescription</key>
+    <string>Face ID is used for secure app authentication if enabled.</string>
+
+    <!-- App transport security — allows local connections only -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsLocalNetworking</key>
+        <true/>
+    </dict>
+
+    <!-- SwiftUI lifecycle -->
+    <key>UIApplicationSceneManifest</key>
+    <dict>
+        <key>UIApplicationSupportsMultipleScenes</key>
+        <false/>
+    </dict>
+
+    <!-- Supported orientations — portrait only for glasses use -->
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+
+    <!-- App appearance -->
+    <key>UIUserInterfaceStyle</key>
+    <string>Dark</string>
+
+    <key>CFBundleDisplayName</key>
+    <string>Insight Glass</string>
+
+    <key>CFBundleShortVersionString</key>
+    <string>1.0.0</string>
+
+    <key>CFBundleVersion</key>
+    <string>1</string>
+</dict>
+</plist>
