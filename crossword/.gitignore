@@ -1,0 +1,24 @@
+node_modules/
+dist/
+build/
+.DS_Store
+*.log
+
+# env
+.env
+.env.*
+!.env.example
+
+# sqlite dev/test db
+apps/server/prisma/*.db
+apps/server/prisma/*.db-journal
+apps/server/*.db
+
+# vite
+apps/web/dist/
+apps/web/.vite/
+
+# test artifacts
+coverage/
+playwright-report/
+test-results/

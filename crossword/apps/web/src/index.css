@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Dark (default) */
+  --bg-base: #06070e;
+  --bg-gradient: radial-gradient(120% 120% at 20% 0%, #131a3a 0%, #06070e 60%);
+  --glass-fill: rgba(255, 255, 255, 0.06);
+  --glass-stroke: rgba(255, 255, 255, 0.14);
+  --glass-blur: 22px;
+  --neon-cyan: #22d3ee;
+  --neon-violet: #a855f7;
+  --neon-lime: #a3e635;
+  --neon-rose: #fb7185;
+  --text-hi: #f8fafc;
+  --text-lo: rgba(248, 250, 252, 0.62);
+}
+
+:root[data-theme='light'] {
+  --bg-base: #f4f6ff;
+  --bg-gradient: radial-gradient(120% 120% at 20% 0%, #ffffff 0%, #eef1ff 60%);
+  --glass-fill: rgba(255, 255, 255, 0.55);
+  --glass-stroke: rgba(15, 23, 42, 0.1);
+  --text-hi: #0f172a;
+  --text-lo: rgba(15, 23, 42, 0.64);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']):not([data-theme='light']) {
+    --bg-base: #f4f6ff;
+    --bg-gradient: radial-gradient(120% 120% at 20% 0%, #ffffff 0%, #eef1ff 60%);
+    --glass-fill: rgba(255, 255, 255, 0.55);
+    --glass-stroke: rgba(15, 23, 42, 0.1);
+    --text-hi: #0f172a;
+    --text-lo: rgba(15, 23, 42, 0.64);
+  }
+}
+
+html {
+  color-scheme: dark;
+}
+html:has([data-theme='light']) {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-base);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-hi);
+  font-family: 'Rubik', 'IBM Plex Sans Arabic', sans-serif;
+  min-height: 100vh;
+}
+
+/* Arabic grid cells: isolated glyph rendering, no ligature shaping. */
+.grid-cell-letter {
+  font-family: 'Noto Naskh Arabic', 'IBM Plex Sans Arabic', sans-serif;
+  font-feature-settings: 'liga' 0, 'calt' 0;
+  font-variant-ligatures: none;
+}
+
+.glass-panel {
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  border: 1px solid var(--glass-stroke);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-panel {
+    background: color-mix(in srgb, var(--bg-base) 20%, var(--glass-fill) 80%);
+    opacity: 0.98;
+  }
+}
+
+::selection {
+  background: color-mix(in srgb, var(--neon-cyan) 35%, transparent);
+}
+
+/* Respect prefers-reduced-motion globally as a hard floor; components also
+   check this via useReducedMotion() for JS-driven animation branching. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--neon-cyan);
+  outline-offset: 2px;
+}

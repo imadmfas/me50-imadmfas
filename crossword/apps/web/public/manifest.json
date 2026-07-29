@@ -1,0 +1,17 @@
+{
+  "name": "الكلمات المتقاطعة النيونية",
+  "short_name": "نيون",
+  "description": "لغز كلمات متقاطعة عربي تعليمي، منافسة مباشرة بين لاعبين",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#06070E",
+  "theme_color": "#06070E",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

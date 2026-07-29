@@ -1,0 +1,239 @@
+// Arabic Neon Crossword — Prisma schema
+//
+// LOCAL DEV DEFAULT: SQLite (zero external services, works out of the box).
+// PRODUCTION: swap the datasource below to PostgreSQL (Supabase/Neon) — see
+// /crossword/README.md "Switching to Postgres for production". SQLite has
+// no native enum, array, or CITEXT types, so this schema deliberately uses
+// String fields (validated by Zod at the application boundary) instead of
+// `enum` / `String[]` / `Citext` so the same schema shape works on both
+// engines with a single line changed. In the Postgres variant, promote
+// `username_key` to CITEXT via a follow-up raw SQL migration for
+// belt-and-suspenders case-insensitive uniqueness at the DB layer too.
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String   @id @default(cuid())
+  username      String   @unique // display form, as typed by the user
+  usernameKey   String   @unique @map("username_key") // normalized uniqueness key, see @anc/shared usernameKey()
+  email         String?  @unique
+  passwordHash  String?  @map("password_hash") // null = passwordless / device-bound lightweight account
+  avatarSeed    String   @map("avatar_seed") // hash used to deterministically generate the geometric neon avatar
+  countryCode   String?  @map("country_code")
+  bio           String?
+  timezone      String   @default("UTC")
+  locale        String   @default("ar")
+  numeralStyle  String   @default("arabic") // "arabic" | "western"
+  xp            Int      @default(0)
+  level         Int      @default(1)
+  streakDays    Int      @default(0) @map("streak_days")
+  lastActiveAt  DateTime @default(now()) @map("last_active_at")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  usernameHistory   UsernameHistory[]
+  ratings           Rating[]
+  matchPlayers      MatchPlayer[]
+  achievements      UserAchievement[]
+  pushSubscriptions PushSubscription[]
+  notificationLogs  NotificationLog[]
+  sessions          Session[]
+  reportsFiled      Report[]           @relation("ReportsFiled")
+  reportsAgainst    Report[]           @relation("ReportsAgainst")
+
+  @@index([usernameKey])
+  @@map("users")
+}
+
+model UsernameHistory {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  username  String
+  changedAt DateTime @default(now()) @map("changed_at")
+
+  @@map("username_history")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  userId       String   @map("user_id")
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  refreshToken String   @unique @map("refresh_token")
+  userAgent    String?  @map("user_agent")
+  ipHash       String?  @map("ip_hash")
+  expiresAt    DateTime @map("expires_at")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("sessions")
+}
+
+model WordEntry {
+  id                String   @id
+  answer            String
+  answerNormalized  String   @map("answer_normalized")
+  length            Int
+  clue              String
+  clueEn            String?  @map("clue_en")
+  category          String // Category union — validated by Zod, see packages/shared/src/types.ts
+  difficulty        String // "easy" | "medium" | "hard"
+  factCard          String   @map("fact_card")
+  source            String
+  verified          Boolean  @default(false)
+  tagsJson          String   @default("[]") @map("tags_json") // JSON-encoded string[]
+  createdAt         DateTime @default(now()) @map("created_at")
+
+  @@index([category])
+  @@index([difficulty])
+  @@map("word_entries")
+}
+
+model PuzzleGrid {
+  id           String   @id
+  seed         String
+  difficulty   String
+  size         Int
+  gridJson     String   @map("grid_json") // client-safe PuzzleGrid (no solution)
+  solutionJson String   @map("solution_json") // server-only solutionByCell + letters, never sent to clients
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  matches Match[]
+
+  @@index([difficulty])
+  @@map("puzzle_grids")
+}
+
+model Match {
+  id           String    @id @default(cuid())
+  puzzleGridId String    @map("puzzle_grid_id")
+  puzzleGrid   PuzzleGrid @relation(fields: [puzzleGridId], references: [id])
+  difficulty   String
+  status       String    @default("active") // "active" | "finished" | "abandoned"
+  isDaily      Boolean   @default(false) @map("is_daily")
+  isBotMatch   Boolean   @default(false) @map("is_bot_match")
+  startedAt    DateTime  @default(now()) @map("started_at")
+  endedAt      DateTime? @map("ended_at")
+
+  players  MatchPlayer[]
+  moveLogs MoveLog[]
+
+  @@index([startedAt])
+  @@map("matches")
+}
+
+model MatchPlayer {
+  id              String  @id @default(cuid())
+  matchId         String  @map("match_id")
+  match           Match   @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  userId          String  @map("user_id")
+  user            User    @relation(fields: [userId], references: [id])
+  score           Int     @default(0)
+  wordsCompleted  Int     @default(0) @map("words_completed")
+  hintsUsed       Int     @default(0) @map("hints_used")
+  won             Boolean @default(false)
+  ratingBefore    Int     @map("rating_before")
+  ratingAfter     Int?    @map("rating_after")
+
+  @@unique([matchId, userId])
+  @@map("match_players")
+}
+
+model MoveLog {
+  id        String   @id @default(cuid())
+  matchId   String   @map("match_id")
+  match     Match    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  userId    String   @map("user_id")
+  entryId   String   @map("entry_id")
+  cellRow   Int      @map("cell_row")
+  cellCol   Int      @map("cell_col")
+  letter    String
+  correct   Boolean
+  serverMs  Int      @map("server_ms") // ms since match start, server clock
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([matchId])
+  @@map("move_logs")
+}
+
+model Rating {
+  id         String   @id @default(cuid())
+  userId     String   @map("user_id")
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  difficulty String // rating is tracked per difficulty
+  value      Int      @default(1200)
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@unique([userId, difficulty])
+  @@index([value])
+  @@map("ratings")
+}
+
+model Achievement {
+  id          String @id
+  code        String @unique
+  title       String
+  titleEn     String? @map("title_en")
+  description String
+  icon        String
+
+  users UserAchievement[]
+
+  @@map("achievements")
+}
+
+model UserAchievement {
+  id            String      @id @default(cuid())
+  userId        String      @map("user_id")
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievementId String      @map("achievement_id")
+  achievement   Achievement @relation(fields: [achievementId], references: [id])
+  earnedAt      DateTime    @default(now()) @map("earned_at")
+
+  @@unique([userId, achievementId])
+  @@map("user_achievements")
+}
+
+model PushSubscription {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  endpoint  String   @unique
+  p256dh    String
+  auth      String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("push_subscriptions")
+}
+
+model NotificationLog {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      String // "inactivity_day1" | "streak_risk" | "rank_drop" | "new_content" | ...
+  sentAt    DateTime @default(now()) @map("sent_at")
+  opened    Boolean  @default(false)
+
+  @@index([userId, type])
+  @@map("notification_logs")
+}
+
+model Report {
+  id             String   @id @default(cuid())
+  reporterId     String   @map("reporter_id")
+  reporter       User     @relation("ReportsFiled", fields: [reporterId], references: [id])
+  reportedUserId String   @map("reported_user_id")
+  reportedUser   User     @relation("ReportsAgainst", fields: [reportedUserId], references: [id])
+  reason         String
+  matchId        String?  @map("match_id")
+  resolved       Boolean  @default(false)
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  @@map("reports")
+}

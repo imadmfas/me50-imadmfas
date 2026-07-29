@@ -1,0 +1,27 @@
+# Optional Postgres for local dev/staging that wants to mirror production
+# instead of the zero-setup SQLite default. See README.md "Switching to
+# Postgres" for the schema.prisma change this pairs with.
+#
+# Usage:
+#   docker compose up -d
+#   # then in apps/server/.env: DATABASE_URL="postgresql://anc:anc@localhost:5432/anc"
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: anc
+      POSTGRES_PASSWORD: anc
+      POSTGRES_DB: anc
+    ports:
+      - '5432:5432'
+    volumes:
+      - anc_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U anc']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  anc_postgres_data:

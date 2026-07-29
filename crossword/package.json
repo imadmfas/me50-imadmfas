@@ -1,0 +1,21 @@
+{
+  "name": "arabic-neon-crossword",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Arabic Neon Crossword — online 2-player Arabic educational crossword duel",
+  "scripts": {
+    "dev:web": "pnpm --filter @anc/web dev",
+    "dev:server": "pnpm --filter @anc/server dev",
+    "build": "pnpm --filter @anc/shared build && pnpm --filter @anc/server build && pnpm --filter @anc/web build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "seed": "pnpm --filter @anc/server seed",
+    "pregenerate:pool": "pnpm --filter @anc/server pregenerate-pool"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
